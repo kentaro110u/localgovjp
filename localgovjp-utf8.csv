@@ -1,4 +1,4 @@
-pid,pref,cid,city,lat,lng,url,phrase
+pid,pref,cid,city,citykana,lat,lng,url,phrase
 1,北海道,1100,札幌市,さっぽろし,141.3543886,43.06208877,http://www.city.sapporo.jp/,市民の力みなぎる、文化と誇りあふれる街
 1,北海道,1101,札幌市 中央区,さっぽろし ちゅうおうく,141.3409671,43.0553865,http://www.city.sapporo.jp/chuo/,市電のふるさと中央区
 1,北海道,1102,札幌市 北区,さっぽろし きたく,141.3408807,43.09079296,http://www.city.sapporo.jp/kitaku/,みてきて北区
