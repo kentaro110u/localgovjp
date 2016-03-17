@@ -1,4 +1,4 @@
-var LOCALGOV_JP = [
+var JP_CITIES = [
 	{ pid:1, pref:'北海道', cid:1100, city:'札幌市', lat:さっぽろし, lng:141.3543886, url:'43.06208877', phrase:http://www.city.sapporo.jp/ }
 	{ pid:1, pref:'北海道', cid:1101, city:'札幌市 中央区', lat:さっぽろし ちゅうおうく, lng:141.3409671, url:'43.0553865', phrase:http://www.city.sapporo.jp/chuo/ }
 	{ pid:1, pref:'北海道', cid:1102, city:'札幌市 北区', lat:さっぽろし きたく, lng:141.3408807, url:'43.09079296', phrase:http://www.city.sapporo.jp/kitaku/ }
