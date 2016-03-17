@@ -459,7 +459,7 @@ var LOCALGOV_JP = [
 	{ pid:8, pref:'茨城県', cid:8341, city:'東海村', citykana:'とうかいむら', lat:140.5661111, lng:36.47305556, url:'http://www.vill.tokai.ibaraki.jp/', phrase:"～自然といのち・調和と循環～" },
 	{ pid:8, pref:'茨城県', cid:8364, city:'大子町', citykana:'だいごまち', lat:140.3552778, lng:36.76805556, url:'http://www.town.daigo.ibaraki.jp/', phrase:"花と緑と若者の住む 互いに支え合う 心豊かなまち" },
 	{ pid:8, pref:'茨城県', cid:8442, city:'美浦村', citykana:'みほむら', lat:140.3019444, lng:36.00444444, url:'http://www.vill.miho.lg.jp/', phrase:"人と自然が輝く美浦村 ともに生きる人と人、人と自然 地域に育まれた湖岸文化" },
-	{ pid:8, pref:'茨城県', cid:8443, city:'阿見町', citykana:'あみまち', lat:140.215, lng:36.03083333, url:'http://www.town.ami.ｌｇ.jp/', phrase:"人と自然がつくる楽しいまち あみ" },
+	{ pid:8, pref:'茨城県', cid:8443, city:'阿見町', citykana:'あみまち', lat:140.215, lng:36.03083333, url:'http://www.town.ami.lg.jp/', phrase:"人と自然がつくる楽しいまち あみ" },
 	{ pid:8, pref:'茨城県', cid:8447, city:'河内町', citykana:'かわちまち', lat:140.2444444, lng:35.88472222, url:'http://www.town.ibaraki-kawachi.lg.jp/', phrase:"太陽が光かがやく水とみどりの調和した安心して暮らせるまち" },
 	{ pid:8, pref:'茨城県', cid:8521, city:'八千代町', citykana:'やちよまち', lat:139.8913889, lng:36.18138889, url:'http://www.town.ibaraki-yachiyo.lg.jp/', phrase:"人・地域・ともに輝く 協働のまち 八千代" },
 	{ pid:8, pref:'茨城県', cid:8542, city:'五霞町', citykana:'ごかまち', lat:139.7452778, lng:36.11444444, url:'http://www.town.goka.lg.jp/', phrase:"人がきらめき だれもが安心・安全に暮らせるまち 五霞" },
