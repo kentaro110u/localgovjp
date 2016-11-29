@@ -10,5 +10,8 @@ https://github.com/gsi-cyberjapan/gsimaps
 地方公共団体情報システム機構 全国自治体マップ検索  
 https://www.j-lis.go.jp/map-search/cms_1069.html  
 
+# update
+2016.11.29 全Webサイトチェックし更新
+
 # license
 CC0 https://creativecommons.org/publicdomain/zero/1.0/  
