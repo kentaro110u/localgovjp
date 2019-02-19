@@ -1,4 +1,4 @@
-# localgovjp
+# localgovjp 日本の地方自治体一覧オープンデータ
 list of local government in Japan  
 pid,pref,cid,city,citykana,lat,lng,url,phrase  
 （都道府県コード, 都道府県名, 市区町村コード, 市区町村名, 市区町村名よみ, 緯度, 経度, 自治体ホームページURL, キャッチフレーズ）  
