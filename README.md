@@ -5,6 +5,7 @@ pid,pref,cid,city,citykana,lat,lng,url,phrase
 
 # for web app
 <script src=https://code4fukui.github.io/localgovjp/localgovjp.js></script>  
+use LOCALGOV_JP  
 
 # sample app
 https://code4fukui.github.io/localgovjp/  
