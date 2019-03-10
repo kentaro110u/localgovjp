@@ -3,6 +3,12 @@ list of local government in Japan
 pid,pref,cid,city,citykana,lat,lng,url,phrase  
 （都道府県コード, 都道府県名, 市区町村コード, 市区町村名, 市区町村名よみ, 緯度, 経度, 自治体ホームページURL, キャッチフレーズ）  
 
+# for web app
+&lt;script src=https://code4fukui.github.io/localgovjp/localgovjp.js&gt;&lt;/script&gt;  
+
+# sample app
+https://code4fukui.github.io/localgovjp/  
+
 # data
 国土地理院  
 https://github.com/gsi-cyberjapan/gsimaps  
