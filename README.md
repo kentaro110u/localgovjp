@@ -20,6 +20,9 @@ https://www.j-lis.go.jp/spd/map-search/cms_1069.html
 # update
 2016.11.29 全Webサイトチェックし更新  
 2017.2.18 泊村の重複を削除  
+2019.1.1 更新
+2020.1.4 更新
+2020.4.17 更新
 
 # license
 CC0 https://creativecommons.org/publicdomain/zero/1.0/  
