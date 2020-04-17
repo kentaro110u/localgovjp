@@ -10,8 +10,6 @@ https://code4fukui.github.io/localgovjp/prefjp-utf8.csv
 JSON  
 https://code4fukui.github.io/localgovjp/localgovjp.json  
 https://code4fukui.github.io/localgovjp/prefjp.json  
-use LOCALGOV_JP  
-https://code4fukui.github.io/localgovjp/localgovjp.js  
 
 # sample app
 https://code4fukui.github.io/localgovjp/  
