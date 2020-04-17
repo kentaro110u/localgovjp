@@ -1,0 +1,368 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>How many cities does your prefecture have? / 日本の都市数</title>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<link rel="apple-touch-icon" href="http://fukuno.jig.jp/app/opendatacity/localgovjp-icon.png"/>
+<meta property="og:image" content="http://fukuno.jig.jp/app/opendatacity/localgovjp.png">
+<meta name="format-detection" content="telephone=no"/>
+<head>
+<script src=lib/fukuno.js></script>
+<script src=localgovjp.js></script>
+<script>"use strict";
+
+var getLocalGovCity = function(callback) {
+	callback(LOCALGOV_JP);
+};
+
+window.onload = function() {
+	getLocalGovCity(function(data) {
+		init(data);
+	});
+};
+
+var databk;
+var init = function(data) {
+	var s = makeJapanHTML();
+	get("japan").innerHTML += s;
+	
+//	dump(data);
+	
+	databk = data;
+	
+	init2014();
+};
+var compareKana = function(a, b) {
+	a = katakanaToHiragana(a.toString());
+	b = katakanaToHiragana(b.toString());
+	if (a < b) {
+		return -1;
+	} else if (a > b) {
+		return 1;
+	}
+	return 0;
+};
+// https://gist.github.com/kawanet/5553478
+/** カタカナをひらがなに変換する関数
+ * @param {String} src - カタカナ
+ * @returns {String} - ひらがな
+ */
+function katakanaToHiragana(src) {
+	return src.replace(/[\u30a1-\u30f6]/g, function(match) {
+		var chr = match.charCodeAt(0) - 0x60;
+		return String.fromCharCode(chr);
+	});
+}
+var init2014 = function() {
+	var data = databk;
+	var countPref = function(pref) {
+		var cnt = 0;
+		for (var i = 0; i < data.length; i++) {
+			var p = data[i].pref;
+			if (p.startsWith(pref))
+				cnt++;
+		}
+		return cnt;
+	};
+	var search = function(s) {
+		return "<a href=http://search.yahoo.co.jp/search?p=" + encodeURIComponent(s) + " target=_blank>" + s + "</a>";
+	};
+//	dump(data);
+	var getContentPref = function(pref) {
+		var d2 = [];
+		for (var i = 0; i < data.length; i++) {
+			var dd = data[i];
+			if (dd.pref.startsWith(pref)) {
+				var url = dd.url;
+				var desc = dd.phrase;
+				d2.push([ url, dd.city, dd.citykana, desc ]);
+			}
+		}
+		d2.sort(function(n, m) {
+			return compareKana(n[2], m[2]);
+		});
+		var s = [];
+		for (var i = 0; i < d2.length; i++) {
+			var d3 = d2[i];
+			s.push("<a href=" + d3[0] + ">" + d3[1] + "(" + d3[2] + ")</a><br>「" + d3[3] + "」<br>");
+		}
+		return s.join("");
+	};
+	for (var i = 1; i <= 47; i++) {
+		var c = get("jp" + i);
+		c.num = i - 1;
+		c.onclick = function() {
+			this.sel();
+		};
+		var cnt = countPref(PREF[i - 1]);
+		c.textContent = cnt;
+		c.style.background = "rgba(10,180,230," + (cnt / 190) + ")";
+		c.style.color = cnt < 100 ? "black" : "white";
+		c.cnt = cnt;
+		c.sel = function() {
+			get("box").innerHTML = PREF[this.num] + "の都市数:" + this.cnt + "<br>" + getContentPref(PREF[this.num]);
+		};
+	}
+	
+	var sum = 0;
+	for (var d in data) {
+		sum++;
+	}
+	var getPrefOpendata = function() {
+		var cnt = 0;
+		for (var i = 0; i < PREF.length; i++) {
+			if (countPref(PREF[i]) > 0)
+				cnt++;
+		}
+		return cnt;
+	};
+	var npref = getPrefOpendata();
+	get("box").innerHTML = "日本の都市数<br>" + sum + " cities";
+//	get("tbl").appendChild(makeTable(data));
+};
+// make table
+var makeTable = function(data) {
+//	dump(data);
+	var tbl = create("table");
+	var ar = [ "都市名", "緯度経度", "作成日", "ライセンス", "星数", "備考" ];
+	var tr = create("tr");
+	for (var i = 0; i < ar.length; i++) {
+		var th = create("th");
+		th.textContent = ar[i];
+		tr.appendChild(th);
+	}
+	tbl.appendChild(tr);
+	
+	var link = function(s, url) {
+		return "<a href=" + url + " target=_blank>" + s + "</a>";
+	};
+	
+	for (var url in data) {
+		var d = data[url];
+		var name = rdf(d, "http://www.w3.org/2000/01/rdf-schema#label", "ja");
+		var created = rdf(d, "http://purl.org/dc/terms/1.1/created");
+		var lat = rdf(d, "http://www.w3.org/2003/01/geo/wgs84_pos#lat");
+		var lng = rdf(d, "http://www.w3.org/2003/01/geo/wgs84_pos#long");
+		var license = rdf(d, "http://purl.org/dc/terms/license");
+		var star = rdf(d, "http://linkdata.org/property/rdf1s127i#lodfivestar");
+		var desc = rdf(d, "http://purl.org/dc/elements/1.1/description");
+		var ar = [
+			"<a href=" + url + " target=_blank>" + name + "</a>",
+			"<a href=http://maps.google.com/?ll=" + lat + "," + lng + " target=_blank>" + lat + "," + lng + "</a>",
+			created,
+			link(normalizeLicense(license), license),
+			star,
+			desc
+		];
+		tr = create("tr");
+		for (var i = 0; i < ar.length; i++) {
+			var td = create("td");
+			td.innerHTML = ar[i];
+			tr.appendChild(td);
+		}
+		tbl.appendChild(tr);
+	};
+	
+	return tbl;
+};
+
+// --
+var PREF = [ "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県" ];
+
+var PREF_S = [ "北海道", "青森 ", "岩手 ", "宮城 ", "秋田 ", "山形 ", "福島 ", "茨城 ", "栃木 ", "群馬 ", "埼玉 ", "千葉 ", "東京", "神奈川 ", "新潟 ", "富山 ", "石川 ", "福井 ", "山梨 ", "長野 ", "岐阜 ", "静岡 ", "愛知 ", "三重 ", "滋賀 ", "京都", "大阪", "兵庫 ", "奈良 ", "和歌山 ", "鳥取 ", "島根 ", "岡山 ", "広島 ", "山口 ", "徳島 ", "香川 ", "愛媛 ", "高知 ", "福岡 ", "佐賀 ", "長崎 ", "熊本 ", "大分 ", "宮崎 ", "鹿児島 ", "沖縄 " ];
+
+var JAPAN = [
+	"          AAA",
+	"          AAA",
+	"          AAA",
+	"          BB ",
+	"          EC ",
+	"          FD ",
+	"       Q OOG ",
+	"       RPTJI ",
+	"  ifebZYUSKH ",
+	"ponhgacWVNML ",
+	"qr lk dX   L ",
+	"ts mj        ",
+	"u            "
+];
+
+var encbase64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+var encbase62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+var to64 = function(n) {
+	return encbase64.charAt(n);
+};
+var from64 = function(c) {
+	return encbase64.indexOf(c);
+};
+var makeJapanHTML = function() {
+	var s = [];
+	s.push("<table id=jp0>");
+	for (var i = 0; i < JAPAN.length; i++) {
+		s.push("<tr>");
+		var jpn = JAPAN[i];
+		for (var j = 0; j < jpn.length; j++) {
+			var c = jpn.charAt(j);
+			var n = from64(c);
+			if (n < 0) {
+				s.push("<td></td>");
+			} else {
+				if (i > 0 && JAPAN[i - 1].charAt(j) == c)
+					continue;
+				var nc = 1;
+				for (; j < jpn.length - 1; j++, nc++)
+					if (c != jpn.charAt(j + 1))
+						break;
+				var nr = 1;
+				for (var k = i + 1; k < JAPAN.length; k++, nr++)
+					if (c != JAPAN[k].charAt(j))
+						break;
+				s.push("<td class=pref id=jp" + (n + 1) + " colspan=" + nc + " rowspan=" + nr + ">" + PREF_S[n] + "</td>");
+			}
+		}
+		s.push("</tr>");
+	}
+	s.push("</table>");
+	return s.join("");
+};
+
+</script>
+<style>
+body {
+	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+	text-align: center;
+	margin: 0px;
+}
+.list {
+	vertical-align: top;
+	margin: 4px 4px 4px 20px;
+	padding: .5em;
+	background: #fff;
+	display: inline-block;
+	width: 400px;
+	height: 340px;
+	overflow: auto;
+}
+.st {
+	display: block;
+	font-size: 200%;
+	font-weight: bold;
+	color: red;
+}
+.content {
+	xtext-align: left;
+}
+/* japan */
+#japan {
+	display: inline-block;
+	width: 420px;
+	height: 420px;
+	x-background: red;
+	position: relative;
+}
+#jp0 {
+}
+#jp0 td {
+	width: 26px;
+	height: 26px;
+	font-size: 10px;
+	vertical-align: middle;
+	text-align: center;
+	border: none;
+}
+#jp0 .pref {
+	border-radius: 4px;
+	border: 1px solid #333;
+	x-background: #faa;
+}
+#jp0 .prefsel {
+	border-radius: 4px;
+	x-background: #f88;
+}
+/* box */
+#box {
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 230px;
+	height: 120px;
+	x-background: #eee;
+	border: 1px solid #333;
+	border-radius: 4px;
+	padding: 10px;
+	text-align: center;
+	overflow: auto;
+	font-size: 80%;
+}
+#box a {
+	color: #f33 !important;
+}
+.content {
+	position: relative;
+	padding: 10px;
+	x-height: 380px;
+	x-background: #fee;
+}
+/* credit */
+.credit {
+	margin: 20px;
+	text-align: center;
+}
+.credit a {
+	color: gray !important;
+}
+#debug {
+	text-align: left;
+}
+textarea {
+	width: 90%;
+	height: 5em;
+}
+h1 a {
+	color: #000 !important;
+	text-decoration: none;
+}
+#tbl table {
+	border-collapse: collapse;
+	margin: 10px 5px;
+}
+#tbl th, #tbl td:nth-child(1), #tbl td:nth-child(3), #tbl td:nth-child(4) {
+	white-space: nowrap;
+}
+#tbl td:nth-child(5) {
+	text-align: center;
+}
+#tbl th, #tbl td {
+	border: 1px solid gray;
+}
+</style>
+</head>
+<body>
+
+<h1>How many cities does your prefecture have? / 日本の都市数</h1>
+<div class="content">
+<div id="japan"><span id="box"></span></div>
+<div class=credit>
+DATA: PUBLIC DOMAIN <a href=https://github.com/codeforfukui/localgovjp target=_blank>list of local government in Japan</a><br>
+APP: CC BY <a href=http://fukuno.jig.jp/1668 target=_blank>fukuno.jig.jp</a><br>
+</div>
+<div id="tbl"></div>
+</div>
+<br>
+<div class=related>
+links<br>
+<a href=http://fukuno.jig.jp/app/opendatacity/citiesratio.html>オープンデータ都市率</a><br>
+<a href=http://fukuno.jig.jp/app/opendatacity/pref.html>オープンデータ都道府県一覧</a><br>
+<a href=http://fukuno.jig.jp/app/opendatacity/transition.html>オープンデータ都市一覧推移</a><br>
+<a href=http://fukuno.jig.jp/app/opendatacity/history.html>オープンデータ都市一覧変遷</a><br>
+<a href=http://fukuno.jig.jp/app/opendatacity/type.html>オープンデータ都市、データ種別</a><br>
+<a href=http://fukuno.jig.jp/app/opendatacity/area.html>オープンデータ都市、エリア別</a><br>
+<a href=http://fukuno.jig.jp/2014/opendatastar target=_blank>日本のオープンデータ都市、星数別</a><br>
+<a href=http://fukuno.jig.jp/app/opendatacity/puzzle3x3.html>オープンデータくんパズル</a><br>
+<a href=https://docs.google.com/a/jig.jp/forms/d/1iM1t3L8mJKYPFgNP816q7W30UI_ouQD7oCAU5TJYSPk/viewform>オープンデータ都市を登録する</a><br>
+</div>
+
+</body>
+</html>
