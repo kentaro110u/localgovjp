@@ -4,8 +4,14 @@ pid,pref,cid,city,citykana,lat,lng,url,phrase
 （都道府県コード, 都道府県名, 市区町村コード, 市区町村名, 市区町村名よみ, 緯度, 経度, 自治体ホームページURL, キャッチフレーズ）  
 
 # for web app
-<script src=https://code4fukui.github.io/localgovjp/localgovjp.js></script>  
-use LOCALGOV_JP  
+CSV
+https://code4fukui.github.io/localgovjp/localgovjp-utf8.csv
+https://code4fukui.github.io/localgovjp/prefjp-utf8.csv
+JSON
+https://code4fukui.github.io/localgovjp/localgovjp.json
+https://code4fukui.github.io/localgovjp/prefjp.json
+use LOCALGOV_JP 
+https://code4fukui.github.io/localgovjp/localgovjp.js
 
 # sample app
 https://code4fukui.github.io/localgovjp/  
