@@ -18,7 +18,7 @@ list of local government in Japan
 
 ## how to update
 
-1. edit [deon/c-localgovjp-utf8.csv](deno/c-localgovjp-utf8.csv)
+1. edit [deno/c-localgovjp-utf8.csv](deno/c-localgovjp-utf8.csv)
 2. run make.js with [Deno](https://deno.land/)
 
 ```bash
@@ -34,15 +34,6 @@ deno run -A make.js
 
 - [国土地理院](https://github.com/gsi-cyberjapan/gsimaps)
 - [地方公共団体情報システム機構 全国自治体マップ検索](https://www.j-lis.go.jp/spd/map-search/cms_1069.html)
-
-## how to update
-
-1. edit deno/c-localgovjp-utf8.csv
-2. run deno
-```js
-cd deno
-deon run -A make.js
-```
 
 ## update
 
