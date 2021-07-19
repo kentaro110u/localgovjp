@@ -16,6 +16,16 @@ list of local government in Japan
    - https://code4fukui.github.io/localgovjp/localgovjp.json  
    - https://code4fukui.github.io/localgovjp/prefjp.json  
 
+## how to update
+
+1. edit [deon/c-localgovjp-utf8.csv](deno/c-localgovjp-utf8.csv)
+2. run make.js with [Deno](https://deno.land/)
+
+```bash
+cd deno
+deno run -A make.js
+```
+
 ## sample app
 
 - https://code4fukui.github.io/localgovjp/  
@@ -43,6 +53,7 @@ deon run -A make.js
 - 2020.4.17 更新
 - 2021.1.20 更新
 - 2021.6.2 福岡県那珂川町→福岡県那珂川市
+- 2021.6.30 三重県北牟婁郡紀北町役場の位置情報誤り修正
 - 2021.7.19 広島県江田島市 場所修正
 
 ## license
