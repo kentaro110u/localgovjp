@@ -16494,8 +16494,8 @@ const LOCALGOV_JP = [
     "cid": "34215",
     "city": "江田島市",
     "citykana": "えたじまし",
-    "lat": "34.22277778",
-    "lng": "132.4441667",
+    "lat": "34.17490134",
+    "lng": "132.46229356",
     "url": "https://www.city.etajima.hiroshima.jp/cms/",
     "phrase": "自然との共生・都市との交流による海生交流都市"
   },

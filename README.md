@@ -25,6 +25,15 @@ list of local government in Japan
 - [国土地理院](https://github.com/gsi-cyberjapan/gsimaps)
 - [地方公共団体情報システム機構 全国自治体マップ検索](https://www.j-lis.go.jp/spd/map-search/cms_1069.html)
 
+## how to update
+
+1. edit deno/c-localgovjp-utf8.csv
+2. run deno
+```js
+cd deno
+deon run -A make.js
+```
+
 ## update
 
 - 2016.11.29 全Webサイトチェックし更新
@@ -34,6 +43,7 @@ list of local government in Japan
 - 2020.4.17 更新
 - 2021.1.20 更新
 - 2021.6.2 福岡県那珂川町→福岡県那珂川市
+- 2021.7.19 広島県江田島市 場所修正
 
 ## license
 
