@@ -1,4 +1,4 @@
-[
+const PREF_JP = [
   {
     "pid": "1",
     "pref": "北海道",

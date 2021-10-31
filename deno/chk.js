@@ -1,15 +1,18 @@
-//import { CSV } from "https://code4sabae.github.io/js/CSV.js";
-import { CSV } from "./CSV.js";
+import { CSV } from "https://code4sabae.github.io/js/CSV.js";
+//import { CSV } from "./CSV.js";
+import { fetchCurl } from "./fetchCurl.js";
 
 const fetchWithTimeout = async (url, timeoutmsec) => {
     const controller = new AbortController();
     const timeout = setTimeout(() => { controller.abort() }, timeoutmsec || 5 * 1000);
     try {
-//        return await fetch(url, { signal: controller.signal });
+        //return await fetch(url, { signal: controller.signal });
         return await fetch(url, { signal: controller.signal, redirect: "manual" });
+        //return await fetchCurl(url);
     } finally {
         clearTimeout(timeout);
     }
+    return null;
 };
 const chkHeader = async (url) => {
     const res = await fetchWithTimeout(url, 5000);
@@ -36,18 +39,23 @@ const chk = async (fn) => {
         */
         console.log(d.url);
         if (d.url.startsWith("http://")) {
-            
-            //const url = "https:" + d.url.substring(5);
-            const url = d.url;
+            const url = "https:" + d.url.substring(5);
+            console.log(url);
+            //const url = d.url;
             try {
                 const res = await fetchWithTimeout(url);
+                console.log(res);
                 if (res.status.toString().startsWith("3")) {
+                //if (res) {
                     console.log(res);
                     d.url = res.headers.get("location");
                     d.modified = true;
                 }
                 d.status = res.status;
+                d.err = "";
+                d.url = url;
             } catch (e) {
+                console.log("err", e);
                 console.log("err", e.name, e.message);
                 d.err = e.message;
             }
@@ -64,18 +72,9 @@ const chk = async (fn) => {
             }
             */
         }
+        //Deno.exit(0);
         await Deno.writeTextFile("c-" + fn, CSV.encode(CSV.fromJSON(data)));
-    }
+   }
 };
 
-//chk("prefjp-utf8.csv");
-//chkHeader("https://fukuno.jig.jp/");
-chk("localgovjp-utf8.csv");
-
-/*
-const res = await fetchWithTimeout("http://www.town.okushiri.lg.jp/");
-console.log(res.headers.get("location"));
-console.log(res.headers.location);
-
-
-*/
+export { chk };

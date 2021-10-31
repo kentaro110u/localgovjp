@@ -1,5 +1,5 @@
 //import { CSV } from "https://code4sabae.github.io/js/CSV.js";
-import { CSV } from "./CSV.js";
+import { CSV } from "https://js.sabae.cc/CSV.js"; 
 
 const fetchWithTimeout = async (url, timeoutmsec) => {
     const controller = new AbortController();
