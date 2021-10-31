@@ -66,7 +66,13 @@ const diffJson2 = async () => { // 改善版
     const diff = JSONUtil.diff(d1, d2);
     if (diff) {
       //console.log(d1, d2, diff);
-      console.log(diff);
+
+      // check other than url
+      delete diff.url;
+      if (Object.keys(diff).length > 0) {
+        console.log(d2);
+        console.log(diff);
+      }
       cnt++;
     }
   }
