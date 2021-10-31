@@ -20,6 +20,9 @@ export const make = async (fn, name, constname) => {
         } else {
             const city = d.pref + d.city;
             d.lgcode = LGCode.encode(city.replace(" ", ""));
+            if (Array.isArray(d.lgcode)) { // 北海道泊村
+                d.lgcode = d.lgcode[0]; // 014036 にする
+            }
             if (!d.lgcode) {
                 console.log(city)
                 Deno.exit(0);

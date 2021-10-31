@@ -909,10 +909,7 @@
     "lng": "140.4989034",
     "url": "http://www.vill.tomari.hokkaido.jp/",
     "phrase": "エネルギーのふるさと とまり　日本海にこにこ元気むら",
-    "lgcode": [
-      "014036",
-      "016969"
-    ]
+    "lgcode": "014036"
   },
   {
     "pid": "1",
@@ -3106,7 +3103,7 @@
     "citykana": "のだむら",
     "lat": "40.11",
     "lng": "141.8180556",
-    "url": "http://www.vill.noda.iwate.jp/",
+    "url": "https://www.vill.noda.iwate.jp/",
     "phrase": "北リアスの砂浜に魅せられて",
     "lgcode": "035033"
   },
@@ -6766,7 +6763,7 @@
     "citykana": "きたもとし",
     "lat": "36.02722222",
     "lng": "139.5302778",
-    "url": "http://www.city.kitamoto.saitama.jp/",
+    "url": "https://www.city.kitamoto.lg.jp/index.html",
     "phrase": "緑にかこまれた健康な文化都市",
     "lgcode": "112330"
   },
@@ -9034,7 +9031,7 @@
     "citykana": "ひらつかし",
     "lat": "35.33555556",
     "lng": "139.3497222",
-    "url": "http://www.city.hiratsuka.kanagawa.jp/",
+    "url": "https://www.city.hiratsuka.kanagawa.jp/",
     "phrase": "ひと まち 自然　生活快適都市　ひらつか",
     "lgcode": "142034"
   },
@@ -10222,7 +10219,7 @@
     "citykana": "あなみずまち",
     "lat": "37.23111111",
     "lng": "136.9125",
-    "url": "http://www.town.anamizu.ishikawa.jp/",
+    "url": "https://www.town.anamizu.lg.jp/",
     "phrase": "まいもんの里 穴水　住みよいまちづくり",
     "lgcode": "174611"
   },
@@ -10402,7 +10399,7 @@
     "citykana": "みはまちょう",
     "lat": "35.60055556",
     "lng": "135.9405556",
-    "url": "http://www.town.mihama.fukui.jp/www/normal_top.jsp",
+    "url": "https://www.town.fukui-mihama.lg.jp/",
     "phrase": "自然かがやき 人いきいき まちがにぎわう 美し（うま）美浜",
     "lgcode": "184420"
   },
@@ -11134,7 +11131,7 @@
     "citykana": "しもすわまち",
     "lat": "36.06972222",
     "lng": "138.0802778",
-    "url": "http://www.town.shimosuwa.lg.jp/www/index.html",
+    "url": "https://www.town.shimosuwa.lg.jp/www/index.html",
     "phrase": "中山道と甲州街道が出会う 大社といで湯の宿場まち",
     "lgcode": "203611"
   },
@@ -13786,7 +13783,7 @@
     "citykana": "あさひちょう",
     "lat": "35.03416667",
     "lng": "136.6644444",
-    "url": "http://www2.town.asahi.mie.jp/",
+    "url": "http://www2.town.asahi.mie.jp/www/index.html",
     "phrase": "住みよさの魅力輝く歩みのまち",
     "lgcode": "243434"
   },
@@ -14590,7 +14587,7 @@
     "citykana": "よさのちょう",
     "lat": "35.56527778",
     "lng": "135.1527778",
-    "url": "http://www.town-yosano.jp/wwwg/index.jsp",
+    "url": "https://www.town.yosano.lg.jp/",
     "phrase": "水・緑・空　笑顔かがやくふれあいのまち",
     "lgcode": "264652"
   },
@@ -16570,7 +16567,7 @@
     "citykana": "かいなんし",
     "lat": "34.15555556",
     "lng": "135.2091667",
-    "url": "http://www.city.kainan.wakayama.jp/",
+    "url": "https://www.city.kainan.lg.jp/",
     "phrase": "元気　ふれあい　安心のまち　海南",
     "lgcode": "302023"
   },
@@ -16870,7 +16867,7 @@
     "citykana": "たいじちょう",
     "lat": "33.59416667",
     "lng": "135.9438889",
-    "url": "http://www.town.taiji.lg.jp/",
+    "url": "https://www.town.taiji.wakayama.jp/",
     "phrase": "日本古式捕鯨発祥の地　太陽と豊かな自然、歴史と文化の町",
     "lgcode": "304221"
   },
@@ -17962,7 +17959,7 @@
     "citykana": "ひがしひろしまし",
     "lat": "34.42694444",
     "lng": "132.7436111",
-    "url": "http://www.city.higashihiroshima.hiroshima.jp/",
+    "url": "https://www.city.higashihiroshima.lg.jp/",
     "phrase": "くふうに満ちてる東広島",
     "lgcode": "342122"
   },
@@ -21310,7 +21307,7 @@
     "citykana": "ひかわちょう",
     "lat": "32.5825",
     "lng": "130.6736111",
-    "url": "http://www.hikawacyou.hinokuni-net.jp/",
+    "url": "https://www.town.hikawa.kumamoto.jp/",
     "phrase": "火燃ゆるまち 氷川町",
     "lgcode": "434680"
   },
