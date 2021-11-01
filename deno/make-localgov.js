@@ -1,3 +1,3 @@
 import { make } from "./make.js";
 
-make("c-localgovjp-utf8.csv", "localgovjp", "LOCALGOV_JP");
+make("localgovjp-utf8.csv", "localgovjp", "LOCALGOV_JP");

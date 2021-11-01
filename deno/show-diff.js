@@ -79,8 +79,8 @@ const diffJson2 = async () => { // 改善版
   console.log(cnt); // 411
 };
 
-const diffAOSSL = async () => { // 改善版
-  const data1 = CSV.toJSON(await CSV.fetch("../20200104/localgovjp-utf8.csv"));
+const diffAOSSL = async (oldfn) => { // 改善版
+  const data1 = CSV.toJSON(await CSV.fetch(oldfn));
   const data2 = CSV.toJSON(await CSV.fetch("../localgovjp-utf8.csv")).map(d => {
     delete d.lgcode;
     return d;
@@ -113,5 +113,5 @@ const diffAOSSL = async () => { // 改善版
 };
 
 //await diffJson2();
-await diffAOSSL();
+await diffAOSSL("../20210120/localgovjp-utf8.csv");
 
