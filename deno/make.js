@@ -43,7 +43,7 @@ export const make = async (fn, name, constname) => {
 
 //chk("prefjp-utf8.csv");
 //chkHeader("https://fukuno.jig.jp/");
-//make("c-localgovjp-utf8.csv", "localgovjp", "LOCALGOV_JP");
+make("c-localgovjp-utf8.csv", "localgovjp", "LOCALGOV_JP");
 //make("c-prefjp-utf8.csv", "prefjp", "PREF_JP");
 
 /*
