@@ -13121,8 +13121,8 @@ const LOCALGOV_JP = [
     "cid": "23216",
     "city": "常滑市",
     "citykana": "とこなめし",
-    "lat": "34.88666667",
-    "lng": "136.8325",
+    "lat": "34.8961158",
+    "lng": "136.8543027",
     "url": "http://www.city.tokoname.aichi.jp/",
     "phrase": "世界に開かれた生活文化都市",
     "lgcode": "232165"
