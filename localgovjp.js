@@ -20563,7 +20563,7 @@ const LOCALGOV_JP = [
     "citykana": "おおまちちょう",
     "lat": "33.21388889",
     "lng": "130.1161111",
-    "url": "http://www.town.omachi.saga.jp/",
+    "url": "https://www.town.omachi.lg.jp/",
     "phrase": "挑戦。そして創造 磨き輝く小さな原石　～絆～ ふれあいあふれる 元気なまち 大町",
     "lgcode": "414239"
   },
